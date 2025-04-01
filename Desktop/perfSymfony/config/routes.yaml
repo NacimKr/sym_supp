@@ -1,0 +1,15 @@
+#Ces infos servent a dire a Symfony de scanner les controllers et si on voit certains attributs
+#tu enregistres les routes automatiquement
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+#On créer une route manuelle sans les attributs
+#Voir docs https://symfony.com/doc/current/routing.html section (creating routes as attributes)
+
+# home: #nom de la route
+#     path: /
+#     controller: App\Controller\MainController::index
+# voir attributs dans les controller

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Tous les pokemons" %}
+
+{% block body %}
+    {{ dump(app) }}
+    {{ dump(repo) }}
+
+    <h1 class="text-light fw-bold">{{ title }}</h1>
+    <a href="{{ path('app_template_add') }}" class="btn btn-primary">Ajouter</a>
+    <a href="{{ path('app_template_add_type') }}" class="btn btn-success">Ajouter un type</a>
+    {% for pokemons in all_pokemons %}
+        <div class="bg-light">
+
+            <div class="d-flex my-3 gap-2">
+            {% if loop.index == 1 %}
+                <a href="{{ path("app_template_show", {name: pokemons.name}) }}"><strong>{{ " - " ~ pokemons.name }}</strong></a>
+                {% else %}
+                <a href="{{ path("app_template_show", {name: pokemons.name}) }}">{{ " - " ~ pokemons.name }}</a>
+            {% endif %}
+
+                <a href="{{ path("app_template_edit", {id: pokemons.id}) }}" class="btn btn-sm btn-warning">Editer</a>
+                <form action="{{ path('app_template_delete', {id: pokemons.id}) }}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+                </form>
+            </div>    
+            <strong>Type</strong>
+            <p>{{ pokemons.type.libelle | default("pas de type renseigné") }}</p>
+            <strong>Dresseur</strong>
+            <p>{{ pokemons.dresseur.nom | default("pas de dresseur renseigné") }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+    <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+        <div style="width: 80%"></div>
+      </div>
+      <div class="container rounded bg-light">
+        <img class="w-25" src="{{ asset('img/PHP-logo.png') }}" alt="">
+      </div>
+
+      <div class="window" style="width: 320px">
+        <div class="title-bar">
+          <div class="title-bar-text">A Window With A Status Bar</div>
+        </div>
+        <div class="window-body">
+      <p> There are just so many possibilities:</p>
+      <ul>
+          <li>A Task Manager</li>
+          <li>A Notepad</li>
+          <li>Or even a File Explorer!</li>
+      </ul>
+        </div>
+        <div class="status-bar">
+          <p class="status-bar-field">Press F1 for help</p>
+          <p class="status-bar-field">Slide 1</p>
+          <p class="status-bar-field">CPU Usage: 14%</p>
+        </div>
+      </div>
+      <progress max="100" value="70"></progress>
+
+{% endblock %}

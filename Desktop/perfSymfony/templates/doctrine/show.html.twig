@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DoctrineController!{% endblock %}
+
+{% block body %}
+    {{ dump(pokemons_all) }}
+    <h1>Pokemons {{ pokemons_all[0].name }}</h1>
+    {% for pokemons in pokemons_all %}
+        <h4>{{ pokemons.name }}</h4>
+        <p>
+            {{ pokemons.content }}
+        </p>
+    {% endfor %}
+{% endblock %}

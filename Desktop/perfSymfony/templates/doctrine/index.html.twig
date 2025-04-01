@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DoctrineController!{% endblock %}
+
+{% block body %}
+    <h1>Pokemons depuis la BD avec Doctrine</h1>
+    {% for pokemons in pokemons_all %}
+        <h4>{{ pokemons.name }}</h4>
+        <p>
+            {{ pokemons.content }}
+        </p>
+        <a href="{{ url("app_doctrine_details", {name:pokemons.name}) }}">Details</a>
+    {% endfor %}
+{% endblock %}

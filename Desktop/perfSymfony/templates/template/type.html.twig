@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Tous les pokemons" %}
+
+{% block body %}
+    {{ dump(app) }}
+    {{ dump(repo) }}
+
+    <h1>{{ title }}</h1>
+    <a href="{{ path('app_template_add') }}" class="btn btn-primary">Ajouter</a>
+    <a href="{{ path('app_template_add_type') }}" class="btn btn-success">Ajouter un type</a>
+    {% for pokemons in all_pokemons %}
+    <p>{{ pokemons.libelle}}</p>
+      {% for poke in pokemons.pokemon  %}
+        <p><strong>Pokemon :</strong>{{ poke.name }}</p>
+      {% endfor %}
+      <a href="{{ path("app_template_edit", {id: pokemons.id}) }}" class="btn btn-sm btn-warning">Editer</a>
+      <form action="{{ path('app_template_delete_type', {id: pokemons.id}) }}" method="POST">
+        <input type="hidden" name="_method" value="DELETE" />
+        <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+      </form>
+      <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+  <div class="container">
+    {# {{ form(form) }} il affichera tous le formulaire #}
+
+    {{ form_start(form) }}
+      {# On indique ici nos champs avec l'affichage qu'on souhaite MAIS il AFFICHE TOU #}
+      {{ form_row(form.name) }}
+      {{ form_row(form.content) }}
+      {{ form_row(form.pv) }}
+
+      {{ form_rest(form) }} {# Pour afficher tous les champs restant #}
+    {{ form_end(form) }}
+  </div>
+{% endblock %}
