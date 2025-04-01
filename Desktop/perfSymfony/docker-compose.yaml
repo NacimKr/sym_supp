@@ -1,0 +1,7 @@
+services:
+  my_app:
+    image: php:8.2-apache
+    volumes:
+      - ./data:/data/app
+    ports:
+      - 8080:80
