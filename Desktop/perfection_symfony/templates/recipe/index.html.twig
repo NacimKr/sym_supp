@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio ab quisquam minus animi eveniet porro unde id beatae placeat consequuntur fugit nostrum eius fugiat tempora odio in soluta earum, pariatur ipsum quia corporis asperiores maxime. Sint tempora ipsum aperiam quae repellat consectetur magnam tempore fugit nam, fuga voluptate animi sit.
+    
+    <a href="{{ path('recipe.add') }}" class="btn btn-primary d-block w-25 my-3">Ajouter</a>
+
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for recipe in recipes %}
+    <ul>
+        <li>
+            <a href="{{ path('admin.recipe.recipeshow', {slug:recipe.slug, id:recipe.id}) }}">{{ recipe.title ~ ' de catégorie ' ~  recipe.category.libelle | default('sans catégorie') }}</a>
+            <a href="{{ path('admin.recipe.recipe.edit', {id:recipe.id})  }}" class="btn btn-warning d-block w-25">Editer</a>
+            <form action="{{ path('admin.recipe.recipe.delete', {id:recipe.id})  }}" method="POST">
+                <button type="submit" class="btn btn-danger w-25">Supprimer</button>
+                <input type="hidden" name="_method" value="DELETE">
+            </form>
+        </li>
+
+        <hr>
+    </ul>
+    {% endfor %}
+{% endblock %}

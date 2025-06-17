@@ -1,0 +1,12 @@
+{% extends 'main/admin.html.twig' %}
+
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {# {{ form_row(form.slug) }} #}
+        {{ form_row(form.content) }}
+
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

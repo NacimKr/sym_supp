@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des cataégories{% endblock %}
+
+{% block body %}
+<a href="{{ path('category_create') }}" class="btn btn-primary my-4">Ajouter</a>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Libelle</th>
+      <th scope="col">Crée à</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for categorie in categories %}
+    <tr>
+      <td>{{ categorie.libelle }}</td>
+      <td>{{ categorie.createdaat|date("d/m/Y") }}</td>
+      <td>
+        <a href="{{ path('category_edit', {id: categorie.id}) }}" class="btn btn-warning">Modifier</a>
+        <a href="{{ path('category_delete', {id: categorie.id}) }}" class="btn btn-danger">Supprimer</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
