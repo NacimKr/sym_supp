@@ -16,14 +16,21 @@
   </thead>
   <tbody>
     {% for categorie in categories %}
-    <tr>
-      <td>{{ categorie.libelle }}</td>
-      <td>{{ categorie.createdaat|date("d/m/Y") }}</td>
-      <td>
-        <a href="{{ path('category_edit', {id: categorie.id}) }}" class="btn btn-warning">Modifier</a>
-        <a href="{{ path('category_delete', {id: categorie.id}) }}" class="btn btn-danger">Supprimer</a>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          {{ categorie.libelle }}
+          {% for recipe in categorie.recipes %}
+          <p>
+            Recette attribuée : {{ recipe.title }}
+          </p>
+          {% endfor %}
+        </td>
+        <td>{{ categorie.createdaat|date("d/m/Y") }}</td>
+        <td>
+          <a href="{{ path('category_edit', {id: categorie.id}) }}" class="btn btn-warning">Modifier</a>
+          <a href="{{ path('category_delete', {id: categorie.id}) }}" class="btn btn-danger">Supprimer</a>
+        </td>
+      </tr>
     {% endfor %}
   </tbody>
 </table>

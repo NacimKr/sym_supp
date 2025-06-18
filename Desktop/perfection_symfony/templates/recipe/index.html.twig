@@ -21,9 +21,9 @@
     {% for recipe in recipes %}
     <ul>
         <li>
-            <a href="{{ path('admin.recipe.recipeshow', {slug:recipe.slug, id:recipe.id}) }}">{{ recipe.title ~ ' de catégorie ' ~  recipe.category.libelle | default('sans catégorie') }}</a>
-            <a href="{{ path('admin.recipe.recipe.edit', {id:recipe.id})  }}" class="btn btn-warning d-block w-25">Editer</a>
-            <form action="{{ path('admin.recipe.recipe.delete', {id:recipe.id})  }}" method="POST">
+            <a href="{{ path('recipe.show', {id:recipe.id})  }}">{{ recipe.title ~ ' de catégorie ' ~  recipe.category.libelle | default('sans catégorie') }}</a>
+            <a href="{{ path('recipe.edit', {id:recipe.id})  }}" class="btn btn-warning d-block w-25">Editer</a>
+            <form action="{{ path('recipe.delete', {id:recipe.id})  }}" method="POST">
                 <button type="submit" class="btn btn-danger w-25">Supprimer</button>
                 <input type="hidden" name="_method" value="DELETE">
             </form>

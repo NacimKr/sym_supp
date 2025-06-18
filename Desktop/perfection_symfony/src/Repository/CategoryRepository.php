@@ -28,6 +28,17 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findAllWithCount()
+    {
+        return $this->createQueryBuilder("c")
+            ->select('c', 'COUNT(c.id) as total')
+            ->leftJoin('c.recipes', 'r')
+            ->groupBy('c.id', 'c.libelle')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

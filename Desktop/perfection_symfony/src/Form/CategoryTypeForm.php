@@ -28,7 +28,7 @@ class CategoryTypeForm extends AbstractType
                 'choice_label' => 'title',
                 'multiple' => true,
                 'expanded' => true,
-                'by_reference' => false // pour modifier les cases a cocher (plusieurs)
+                'by_reference' => false // pour modifier les cases a cocher (plusieurs) pour modifier l'objet
             ])
             ->add('updatedAt', null, [
                 'widget' => 'single_text',
